@@ -1,0 +1,17 @@
+{
+  "name": "Cryptera",
+  "short_name": "Cryptera",
+  "description": "Your crypto. Your future.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#05080f",
+  "theme_color": "#2F6BFF",
+  "icons": [
+    {
+      "src": "nexus.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

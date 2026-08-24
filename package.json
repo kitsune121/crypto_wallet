@@ -1,0 +1,71 @@
+{
+  "name": "cryptera-wallet",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Cryptera — self-custody crypto wallet",
+  "author": "Cryptera",
+  "main": "electron/main.cjs",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "build:web": "npm run build",
+    "build:win": "npm run electron:build",
+    "build:mobile": "npm run build && npx cap sync android",
+    "preview": "vite preview",
+    "electron:dev": "concurrently -k \"vite --host 127.0.0.1 --port 5173 --strictPort\" \"wait-on http://127.0.0.1:5173 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 electron .\"",
+    "electron:build": "npm run build && electron-builder --win",
+    "electron:start": "electron .",
+    "cap:sync": "npx cap sync",
+    "cap:android": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.0",
+    "@capacitor/cli": "^8.5.0",
+    "@capacitor/core": "^8.5.0",
+    "@capacitor/ios": "^8.5.0",
+    "@scure/bip32": "^1.7.0",
+    "bip39": "^3.1.0",
+    "buffer": "^6.0.3",
+    "ethers": "^6.15.0",
+    "lucide-react": "^0.541.0",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/bip39": "^3.0.4",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^10.0.5",
+    "cross-env": "^10.1.0",
+    "electron": "^43.4.1",
+    "electron-builder": "^26.15.3",
+    "typescript": "~5.8.3",
+    "vite": "^7.1.2",
+    "wait-on": "^9.1.0"
+  },
+  "build": {
+    "appId": "com.cryptera.wallet",
+    "productName": "Cryptera",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
