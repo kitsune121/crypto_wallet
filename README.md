@@ -25,3 +25,4 @@ See [BUILD.md](./BUILD.md) for details.
 - Splash poster (full image + progress + Skip)
 - Create / import wallet, send / receive, networks, tokens
 - About us → full-screen poster modal
+- Bottom nav, Help, Settings
